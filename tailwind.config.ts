@@ -10,13 +10,13 @@ const config: Config = {
   ],
   daisyui: {
     themes: ["light","dark","luxury","business","night","dim","sunset"], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
-    darkTheme: "luxury", // name of one of the included themes for dark mode
+    darkTheme: "business", // name of one of the included themes for dark mode
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
     utils: true, // adds responsive and modifier utility classes
     prefix: "", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
     logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
-    themeRoot: ":root", // The element that receives theme color CSS variables
+    themeRoot: "*", // The element that receives theme color CSS variables
   },
   darkMode: "class",
   theme: {
@@ -180,12 +180,6 @@ const config: Config = {
       },
       opacity: {
         65: ".65",
-      },
-      backgroundImage: {
-        video: "url('../images/video/video.png')",
-      },
-      content: {
-        "icon-copy": 'url("../images/icon/icon-copy-alt.svg")',
       },
       transitionProperty: { width: "width", stroke: "stroke" },
       borderWidth: {

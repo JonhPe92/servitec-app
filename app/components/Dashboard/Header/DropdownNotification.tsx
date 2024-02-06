@@ -34,7 +34,7 @@ const DropdownNotification = () => {
   });
 
   return (
-    <li className="relative">
+    <li className='relative' >
       <Link
         ref={trigger}
         onClick={() => {

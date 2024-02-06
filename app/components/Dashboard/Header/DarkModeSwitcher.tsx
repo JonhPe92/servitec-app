@@ -1,27 +1,30 @@
-import useColorMode from "@/app/hooks/useColorMode";
+import { ThemeContext } from "@/app/context/ThemeContext";
+import { useContext } from "react";
+
 
 const DarkModeSwitcher = () => {
-  const [colorMode, setColorMode] = useColorMode();
+  //const [colorMode, setColorMode] = useColorMode();
+  const { theme, changeTheme} = useContext(ThemeContext);
 
   return (
     <li>
       <label
         className={`relative m-0 block h-7.5 w-14 rounded-full ${
-          colorMode === 'dark' ? 'bg-primary' : 'bg-gray-500'
+          theme === 'business' ? 'bg-gray-50' : 'bg-base-100'
         }`}
       >
         <input
           type="checkbox"
           onChange={() => {
-            if (typeof setColorMode === 'function') {
-              setColorMode(colorMode === 'light' ? 'dark' : 'light');
+            if (typeof changeTheme === 'function') {
+              changeTheme(theme === 'light' ? 'business' : 'light');
             }
           }}
           className="dur absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0"
         />
         <span
           className={`absolute top-1/2 left-[3px] flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center rounded-full bg-white shadow-switcher duration-75 ease-linear ${
-            colorMode === 'dark' && '!right-[3px] !translate-x-full'
+            theme === 'business' && '!right-[3px] !translate-x-full'
           }`}
         >
           <span className="dark:hidden">

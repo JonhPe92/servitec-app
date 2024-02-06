@@ -4,9 +4,14 @@ import { SideNavItem } from './types';
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
-    title: 'Home',
+    title: 'Dashboard',
     path: '/dashboard',
     icon: <Icon icon="lucide:home" width="24" height="24" />,
+  },
+  {
+    title: 'Clientes',
+    path: '/dashboard/clients',
+    icon: <Icon icon="mdi:business-outline" width="24" height="24" />,
   },
   {
     title: 'Projects',
@@ -19,14 +24,5 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
       { title: 'Graphic Design', path: '/projects/graphic-design' },
     ],
   },
-  {
-    title: 'Messages',
-    path: '/messages',
-    icon: <Icon icon="lucide:mail" width="24" height="24" />,
-  },
-  {
-    title: 'Help',
-    path: '/help',
-    icon: <Icon icon="lucide:help-circle" width="24" height="24" />,
-  },
+
 ];

@@ -1,11 +1,12 @@
 "use client";
-import "../styles/globals.css"
+import "../styles/globals.css";
 
-import Loader from "../ui/common/Loader";
-import Footer from "../ui/dashboard/Footer/Footer";
-import Header from "../ui/dashboard/Header/Header";
-import Sidebar from "../ui/dashboard/Sidebar";
+import Loader from "../components/Common/Loader/Loader";
+import Header from "../components/Dashboard/Header/Header";
+import Sidebar from "../components/Dashboard/Sidebar/Sidebar";
 import { useState, useEffect } from "react";
+import { ThemeProvider } from "../context/ThemeContext";
+import ClientThemeWrapper from "../context/ClientThemeWrapper";
 
 export default function DashboardLayout({
   children,
@@ -21,42 +22,45 @@ export default function DashboardLayout({
   }, []);
 
   return (
-   
-      <section data-theme="dim">
-     
-        <div >
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="flex h-screen overflow-hidden">
-              {/* <!-- ===== Sidebar Start ===== --> */}
-              <Sidebar
-                sidebarOpen={sidebarOpen}
-                setSidebarOpen={setSidebarOpen}
-              />
-              {/* <!-- ===== Sidebar End ===== --> */}
 
-              {/* <!-- ===== Content Area Start ===== --> */}
-              <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-                {/* <!-- ===== Header Start ===== --> */}
-                <Header
-                  sidebarOpen={sidebarOpen}
-                  setSidebarOpen={setSidebarOpen}
-                />
-                {/* <!-- ===== Header End ===== --> */}
+      <section>
+        <ThemeProvider>
+          <ClientThemeWrapper>
+            <div>
+              {loading ? (
+                <Loader />
+              ) : (
+                <div className="flex h-screen overflow-hidden">
+                  {/* <!-- ===== Sidebar Start ===== --> */}
+                  <Sidebar
+                    sidebarOpen={sidebarOpen}
+                    setSidebarOpen={setSidebarOpen}
+                  />
+                  {/* <!-- ===== Sidebar End ===== --> */}
 
-                {/* <!-- ===== Main Content Start ===== --> */}
-                <main>
-                  <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-1" >
-                    {children}
+                  {/* <!-- ===== Content Area Start ===== --> */}
+                  <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+                    {/* <!-- ===== Header Start ===== --> */}
+                    <Header
+                      sidebarOpen={sidebarOpen}
+                      setSidebarOpen={setSidebarOpen}
+                    />
+                    {/* <!-- ===== Header End ===== --> */}
+
+                    {/* <!-- ===== Main Content Start ===== --> */}
+                    <main >
+                      <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p">
+                        {children}
+                      </div>
+                    </main>
+                    {/* <!-- ===== Main Content End ===== --> */}
                   </div>
-                </main>
-                {/* <!-- ===== Main Content End ===== --> */}
-              </div>
-              {/* <!-- ===== Content Area End ===== --> */}
+                  {/* <!-- ===== Content Area End ===== --> */}
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </ClientThemeWrapper>
+        </ThemeProvider>
       </section>
 
   );
