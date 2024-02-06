@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useState, useEffect } from "react";
-import Loader from "../components/Common/Loader/Loader";
+import Loader from "@/components/Common/Loader/Loader";
 
 export const ThemeContext = createContext();
 

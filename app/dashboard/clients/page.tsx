@@ -1,4 +1,4 @@
-import Breadcumb from "@/app/components/Breadcumb/Breadcumb"
+import Breadcumb from "@/components/Breadcumb/Breadcumb"
 
 
 const Clients = () => {

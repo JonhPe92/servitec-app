@@ -1,12 +1,10 @@
 "use client";
-import "../styles/globals.css";
 
-import Loader from "../components/Common/Loader/Loader";
-import Header from "../components/Dashboard/Header/Header";
-import Sidebar from "../components/Dashboard/Sidebar/Sidebar";
+import Loader from "@/components/Common/Loader/Loader";
+import Header from "@/components/Dashboard/Header/Header";
+import Sidebar from "@/components/Dashboard/Sidebar/Sidebar";
 import { useState, useEffect } from "react";
-import { ThemeProvider } from "../context/ThemeContext";
-import ClientThemeWrapper from "../context/ClientThemeWrapper";
+
 
 export default function DashboardLayout({
   children,
@@ -24,8 +22,6 @@ export default function DashboardLayout({
   return (
 
       <section>
-        <ThemeProvider>
-          <ClientThemeWrapper>
             <div>
               {loading ? (
                 <Loader />
@@ -59,8 +55,6 @@ export default function DashboardLayout({
                 </div>
               )}
             </div>
-          </ClientThemeWrapper>
-        </ThemeProvider>
       </section>
 
   );

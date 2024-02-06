@@ -1,33 +1,88 @@
-import { Roboto } from 'next/font/google';
-import type { Config } from "tailwindcss";
-const defaultTheme = require("tailwindcss/defaultTheme");
+import type { Config } from "tailwindcss"
 
-const config: Config = {
+const config = {
+  darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  daisyui: {
-    themes: ["light","dark","luxury","business","night","dim","sunset"], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
-    darkTheme: "business", // name of one of the included themes for dark mode
-    base: true, // applies background color and foreground color for root element by default
-    styled: true, // include daisyUI colors and design decisions for all components
-    utils: true, // adds responsive and modifier utility classes
-    prefix: "", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
-    logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
-    themeRoot: "*", // The element that receives theme color CSS variables
-  },
-  darkMode: "class",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  prefix: "",
   theme: {
-   
-    screens: {
-      "2xsm": "375px",
-      xsm: "425px",
-      "3xl": "2000px",
-      ...defaultTheme.screens,
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
     },
     extend: {
+      colors: {
+        themeColor: '#0c0a09',
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+          
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        rotating: {
+          "0%, 100%": { transform: "rotate(360deg)" },
+          "50%": { transform: "rotate(0deg)" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "ping-once": "ping 5s cubic-bezier(0, 0, 0.2, 1)",
+        rotating: "rotating 30s linear infinite",
+        "spin-1.5": "spin 1.5s linear infinite",
+        "spin-2": "spin 2s linear infinite",
+        "spin-3": "spin 3s linear infinite",
+      },
       fontSize: {
         "title-xxl": ["44px", "55px"],
         "title-xl": ["36px", "45px"],
@@ -181,6 +236,12 @@ const config: Config = {
       opacity: {
         65: ".65",
       },
+      backgroundImage: {
+        video: "url('../images/video/video.png')",
+      },
+      content: {
+        "icon-copy": 'url("../images/icon/icon-copy-alt.svg")',
+      },
       transitionProperty: { width: "width", stroke: "stroke" },
       borderWidth: {
         6: "6px",
@@ -205,21 +266,9 @@ const config: Config = {
         1: "0px 1px 0px #E2E8F0",
         2: "0px 1px 4px rgba(0, 0, 0, 0.12)",
       },
-      keyframes: {
-        rotating: {
-          "0%, 100%": { transform: "rotate(360deg)" },
-          "50%": { transform: "rotate(0deg)" },
-        },
-      },
-      animation: {
-        "ping-once": "ping 5s cubic-bezier(0, 0, 0.2, 1)",
-        rotating: "rotating 30s linear infinite",
-        "spin-1.5": "spin 1.5s linear infinite",
-        "spin-2": "spin 2s linear infinite",
-        "spin-3": "spin 3s linear infinite",
-      },
     },
   },
-  plugins: [require("daisyui")],
-};
-export default config;
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
+
+export default config

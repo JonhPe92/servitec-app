@@ -59,7 +59,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-base-200 duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-999 shadow-1 shadow-gray-900 dark:shadow-gray-400 flex h-screen w-72.5 flex-col overflow-y-hidden duration-300 ease-linear lg:static lg:translate-x-0 bg-themeColor ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -72,7 +72,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             src={"/images/logo/logo-removebg.png"}
             alt="Logo"
           /> */}
-          <h1 className="font-bold text-primary-content text-xl mt-3">SERVITEC</h1>
+          <h1 className="font-bold text-gray-100 text-xl mt-3">SERVITEC</h1>
           
         </Link>
 

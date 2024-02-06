@@ -22,7 +22,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
           <>
             <button
               onClick={toggleSubMenu}
-              className={`flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between text-gray-50 hover:bg-zinc-100 hover:text-secondary ${
+              className={`flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between text-gray-50 hover:bg-zinc-100 hover:text-gray-900 ${
                 pathname.includes(item.path) ? 'bg-zinc-100 hover:text-secondary' : ''
               }`}
             >
@@ -57,12 +57,12 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         ) : (
           <Link
             href={item.path}
-            className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 hover:text-secondary text-gray-50 ${
+            className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 hover:text-gray-900 text-gray-50 ${
               item.path === pathname ? 'bg-primary' : ''
             }`}
           >
             {item.icon}
-            <span className="font-semibold text-md flex hover:text-secondary">{item.title}</span>
+            <span className="font-semibold text-md flex">{item.title}</span>
           </Link>
         )}
       </div>
