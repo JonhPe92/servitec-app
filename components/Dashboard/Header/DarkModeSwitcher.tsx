@@ -4,7 +4,7 @@ import { useTheme } from "next-themes"
 const DarkModeSwitcher = () => {
 
   const { theme, setTheme } = useTheme()
-  console.log("Current theme "+ theme)
+
   return (
     <li>
       <label

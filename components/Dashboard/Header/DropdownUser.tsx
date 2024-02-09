@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { logout } from "@/lib/supabase/login/actions";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -33,6 +34,14 @@ const DropdownUser = () => {
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
   });
+
+	const [isPending, startTransition] = useTransition();
+	const LogoutAction = async () => {
+		startTransition(async () => {
+			await logout();
+		});
+	};
+
 
   return (
     <div className="relative">
@@ -80,7 +89,7 @@ const DropdownUser = () => {
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
         onBlur={() => setDropdownOpen(false)}
-        className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border shadow-default dark:bg-base-100 ${
+        className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border shadow-default ${
           dropdownOpen === true ? "block" : "hidden"
         }`}
       >
@@ -157,7 +166,7 @@ const DropdownUser = () => {
             </Link>
           </li>
         </ul>
-        <button className="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+        <button onClick={LogoutAction} className="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
           <svg
             className="fill-current"
             width="22"
@@ -175,7 +184,7 @@ const DropdownUser = () => {
               fill=""
             />
           </svg>
-          Log Out
+          Cerrar sesion
         </button>
       </div>
       {/* <!-- Dropdown End --> */}
